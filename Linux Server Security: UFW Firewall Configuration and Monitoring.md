@@ -1,3 +1,5 @@
+## Linux Server Security: UFW Firewall Configuration and Monitoring
+
 ### I. Enable UFW (Uncomplicated Firewall) 
 #### Default UFW Policies -
 - Incoming: Denied (blocked) by default.
@@ -116,3 +118,22 @@ Here, we are setting the log level to **high** to monitor all the blocked packet
 
 ### 3. Analysing the log entry
 It’s useful because it shows who tried to connect (SRC), what service they targeted (DPT), which protocol (PROTO) is used, and that UFW blocked it. Also it helps to monitor, block, and troubleshoot network traffic.
+
+### 4. Fetching the Logs
+Now, we are monitoring the log in real time.
+
+#### Command: 
+> sudo tail -f /var/log/ufw.log
+<img width="830" height="465" alt="image" src="https://github.com/user-attachments/assets/d85274fc-83c1-4392-be35-4c2c6e49685a" />
+
+The logs are stored in /var/log/ufw.log. Adding the OPTION **-f** allows us to monitor in real time
+
+### 5. Filter specific entries.
+The **grep** command allows us to filter the specific entries.
+
+#### Command:
+> sudo grep 'DENY' /var/log/ufw.log
+> sudo grep 'ALLOW' /var/log/ufw.log
+<img width="822" height="470" alt="image" src="https://github.com/user-attachments/assets/a43af973-febe-4d68-9efa-761b4a4885e1" />
+
+Here, we dont find any logs for deny because there has not been any connection attempt made after the UFW was enabled.
