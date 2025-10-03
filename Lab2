@@ -1,0 +1,11 @@
+### I. Enable UFW (Uncomplicated Firewall) 
+#### Default UFW Policies -
+- Incoming: Denied (blocked) by default.
+- Outgoing: Allowed by default.
+
+### 1. Check the status of UFW
+Here, we are checking the status of the firewall, whether its active or inactive.
+
+#### Command:
+> sudo ufw status
+
